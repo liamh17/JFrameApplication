@@ -16,6 +16,11 @@ public class Main
 		
 		JButton button = new JButton("This is a button!");
 		JButton button2 = new JButton("Yo it's another button!");
+		JButton buttonSum = new JButton("Add a and b!");
+		JButton buttonDifference = new JButton("Subtract a and b!");
+		JButton buttonProduct = new JButton("Multiply a and b!");
+		JButton buttonQuotient = new JButton("Divide a and b!");
+		
 		JButton closeButton = new JButton("Click to close this thingy!");
 		
 		JPanel panel = new JPanel();
@@ -26,26 +31,56 @@ public class Main
 		//panel.add(label);
 		panel.add(button);
 		panel.add(button2); 
+		panel.add(buttonSum);
+		panel.add(buttonDifference);
+		panel.add(buttonProduct);
+		panel.add(buttonQuotient);
+		
 		panel.add(closeButton);
+		
 		
 		frame.setVisible(true);
 		frame.add(panel);
 		frame.setSize(400, 400);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setTitle("Hello. Can you hear me?");
+		frame.setTitle("JFrame button testing!");
 		
 		button.setSize(50, 50);
-		button.setText("Hey how are ya");
+		button.setText("Hello!");
 		button.setEnabled(true);
 		
 		button2.setSize(50, 50);
-		button2.setText("What's up dog?!");
+		button2.setText("How's the weather?");
 		button2.setEnabled(true);
 		
 		closeButton.setSize(50, 50);
 		closeButton.setText("Close this thing!");
 		closeButton.setEnabled(true);
+		
+		buttonSum.setSize(50, 50);
+		buttonSum.setText("Add a and b!");
+		buttonSum.setEnabled(true);
+		
+		buttonDifference.setSize(50, 50);
+		buttonDifference.setText("Subtract a and b!");
+		buttonDifference.setEnabled(true);
+		
+		buttonProduct.setSize(50, 50);
+		buttonProduct.setText("Multiply a and b!");
+		buttonProduct.setEnabled(true);
+		
+		buttonQuotient.setSize(50, 50);
+		buttonQuotient.setText("Divide a and b!");
+		buttonQuotient.setEnabled(true);
+		
+		double a = 2; 
+		double b = 2;
+		double sum = a + b;
+		double difference = a - b; 
+		double product = a * b; 
+		double quotient = a / b; 
+		
 		//closeButton.setLocation(45, 25);
 		
 		//ActionEvent e = new ActionEvent(button, 1, "Press button"); 
@@ -55,24 +90,49 @@ public class Main
 			if(button.getModel().isRollover()) 
 			{
 				button.setEnabled(true);
-				System.out.println("Nice work clicking that button");
+				System.out.println("Hello! How are you today?");
 				//break;
 			}
 			else if(button2.getModel().isPressed())
 			{	
 				button2.setEnabled(true);
-				System.out.println("Dang it is another button!");
+				System.out.println("It's awfully cold!");
 				//break;
+			}
+			else if(buttonSum.getModel().isPressed()) 
+			{
+				buttonSum.setEnabled(true);
+				System.out.println(sum);
+				//break;
+			}
+			else if(buttonDifference.getModel().isPressed())
+			{
+				buttonDifference.setEnabled(true);
+				System.out.println(difference);
+				//break;
+			}
+			else if(buttonProduct.getModel().isPressed()) 
+			{
+				buttonProduct.setEnabled(true);
+				System.out.println(product);
+				//break;
+			}
+			else if(buttonQuotient.getModel().isPressed())
+			{
+				buttonQuotient.setEnabled(true);
+				System.out.println(quotient);
+				//break; 
 			}
 			else if(closeButton.getModel().isPressed())
 			{
 				closeButton.setEnabled(true);
+				System.out.println("Goodbye!");
 				System.exit(0);
 				//break;
 			}
 			else
 			{
-				System.out.println("Nothings pressed!");
+				System.out.println("Press something dangit!");
 			}
 		}
 		/*JFrame frame = new JFrame("JFrame Example");
