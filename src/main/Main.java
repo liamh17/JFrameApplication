@@ -1,16 +1,19 @@
 package main;
 
 import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
+import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel; 
 
 public class Main 
 {
-	public static void main(String[] args) 
+	static Scanner input = new Scanner(System.in);
+	public static void main(String[] args)
 	{
 		JFrame frame = new JFrame("JFrame example"); 
 		
@@ -20,6 +23,12 @@ public class Main
 		JButton buttonDifference = new JButton("Subtract a and b!");
 		JButton buttonProduct = new JButton("Multiply a and b!");
 		JButton buttonQuotient = new JButton("Divide a and b!");
+		
+		SpinnerModel model = new SpinnerNumberModel(2, 1, 500, 1); 
+		JSpinner spinner = new JSpinner(model); 
+		
+		SpinnerModel model2 = new SpinnerNumberModel(1, 1, 500, 1); 
+		JSpinner spinner2 = new JSpinner(model2); 
 		
 		JButton closeButton = new JButton("Click to close this thingy!");
 		
@@ -35,6 +44,8 @@ public class Main
 		panel.add(buttonDifference);
 		panel.add(buttonProduct);
 		panel.add(buttonQuotient);
+		panel.add(spinner);
+		panel.add(spinner2); 
 		
 		panel.add(closeButton);
 		
@@ -74,8 +85,8 @@ public class Main
 		buttonQuotient.setText("Divide a and b!");
 		buttonQuotient.setEnabled(true);
 		
-		int a = 5; 
-		int b = 5;
+		int a = (Integer) spinner.getValue();
+		int b = (Integer) spinner2.getValue(); 
 		int sum = a + b;
 		int difference = a - b; 
 		int product = a * b; 
@@ -117,7 +128,7 @@ public class Main
 				System.out.println("a * b = " + product);
 				//break;
 			}
-			else if(buttonQuotient.getModel().isPressed())
+			else if(buttonQuotient.getModel().isPressed() && (Integer) spinner.getValue() > 0)
 			{
 				buttonQuotient.setEnabled(true);
 				System.out.println("a / b = " + quotient);
