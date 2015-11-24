@@ -14,8 +14,8 @@ public class Main
 	{
 		JFrame frame = new JFrame("JFrame example"); 
 		
-		JButton button = new JButton("This is a button!");
-		JButton button2 = new JButton("Yo it's another button!");
+		//JButton button = new JButton("");
+		//JButton button2 = new JButton("");
 		JButton buttonSum = new JButton("Add a and b!");
 		JButton buttonDifference = new JButton("Subtract a and b!");
 		JButton buttonProduct = new JButton("Multiply a and b!");
@@ -29,8 +29,8 @@ public class Main
 		//JLabel label = new JLabel("This is a label!");
 		
 		//panel.add(label);
-		panel.add(button);
-		panel.add(button2); 
+		//panel.add(button);
+		//panel.add(button2); 
 		panel.add(buttonSum);
 		panel.add(buttonDifference);
 		panel.add(buttonProduct);
@@ -44,15 +44,15 @@ public class Main
 		frame.setSize(400, 400);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setTitle("JFrame button testing!");
+		frame.setTitle("BASIC CALCULATOR");
 		
-		button.setSize(50, 50);
+		/*button.setSize(50, 50);
 		button.setText("Hello!");
-		button.setEnabled(true);
+		button.setEnabled(true);*/
 		
-		button2.setSize(50, 50);
+		/*button2.setSize(50, 50);
 		button2.setText("How's the weather?");
-		button2.setEnabled(true);
+		button2.setEnabled(true);*/
 		
 		closeButton.setSize(50, 50);
 		closeButton.setText("Close this thing!");
@@ -74,12 +74,12 @@ public class Main
 		buttonQuotient.setText("Divide a and b!");
 		buttonQuotient.setEnabled(true);
 		
-		double a = 2; 
-		double b = 2;
-		double sum = a + b;
-		double difference = a - b; 
-		double product = a * b; 
-		double quotient = a / b; 
+		int a = 5; 
+		int b = 5;
+		int sum = a + b;
+		int difference = a - b; 
+		int product = a * b; 
+		int quotient = a / b; 
 		
 		//closeButton.setLocation(45, 25);
 		
@@ -87,7 +87,7 @@ public class Main
 			
 		while(true)
 		{
-			if(button.getModel().isRollover()) 
+			/*if(button.getModel().isRollover()) 
 			{
 				button.setEnabled(true);
 				System.out.println("Hello! How are you today?");
@@ -98,29 +98,29 @@ public class Main
 				button2.setEnabled(true);
 				System.out.println("It's awfully cold!");
 				//break;
-			}
-			else if(buttonSum.getModel().isPressed()) 
+			}*/
+			if(buttonSum.getModel().isPressed()) 
 			{
 				buttonSum.setEnabled(true);
-				System.out.println(sum);
+				System.out.println("a + b = " + sum);
 				//break;
 			}
 			else if(buttonDifference.getModel().isPressed())
 			{
 				buttonDifference.setEnabled(true);
-				System.out.println(difference);
+				System.out.println("a - b = " + difference);
 				//break;
 			}
 			else if(buttonProduct.getModel().isPressed()) 
 			{
 				buttonProduct.setEnabled(true);
-				System.out.println(product);
+				System.out.println("a * b = " + product);
 				//break;
 			}
 			else if(buttonQuotient.getModel().isPressed())
 			{
 				buttonQuotient.setEnabled(true);
-				System.out.println(quotient);
+				System.out.println("a / b = " + quotient);
 				//break; 
 			}
 			else if(closeButton.getModel().isPressed())
