@@ -1,14 +1,20 @@
 package main;
 
 import java.awt.FlowLayout;
+import java.text.ParseException;
 import java.util.Scanner;
 
 import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerModel;
-import javax.swing.SpinnerNumberModel; 
+import javax.swing.SpinnerNumberModel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.text.DefaultFormatter; 
 
 public class Main 
 {
@@ -28,7 +34,26 @@ public class Main
 		JSpinner spinner = new JSpinner(model); 
 		
 		SpinnerModel model2 = new SpinnerNumberModel(1, 1, 500, 1); 
-		JSpinner spinner2 = new JSpinner(model2); 
+		JSpinner spinner2 = new JSpinner(model2);
+		
+		JComponent comp = spinner.getEditor();
+		JComponent comp2 = spinner2.getEditor(); 
+		
+		JFormattedTextField field = (JFormattedTextField) comp.getComponent(0);
+		JFormattedTextField field2 = (JFormattedTextField) comp2.getComponent(0);
+		
+		DefaultFormatter formatter = (DefaultFormatter) field.getFormatter();
+		DefaultFormatter formatter2 = (DefaultFormatter) field2.getFormatter(); 
+		formatter.setCommitsOnValidEdit(true);
+	    spinner.addChangeListener(new ChangeListener() {
+
+	        @Override
+	        public void stateChanged(ChangeEvent e) {
+	            System.out.println("value changed: " + spinner.getValue());
+	        }
+	    });
+		
+		spinner.setEnabled(true);
 		
 		JButton closeButton = new JButton("Click to close this thingy!");
 		
@@ -85,19 +110,30 @@ public class Main
 		buttonQuotient.setText("Divide a and b!");
 		buttonQuotient.setEnabled(true);
 		
-		int a = (Integer) spinner.getValue();
-		int b = (Integer) spinner2.getValue(); 
-		int sum = a + b;
-		int difference = a - b; 
-		int product = a * b; 
-		int quotient = a / b; 
-		
+		/*try 
+		{
+			spinner.commitEdit();
+		} 
+		catch (ParseException e) 
+		{
+			System.out.println("Commitment of value didn't work! " + e.getMessage());
+		} */
+			
 		//closeButton.setLocation(45, 25);
-		
+		 
 		//ActionEvent e = new ActionEvent(button, 1, "Press button"); 
 			
 		while(true)
 		{
+			// TODO:  COMPLETED
+			int a = (Integer) spinner.getValue();
+			// TODO: Find a way to update this via change in spinner - COMPLETED
+			int b = (Integer) spinner2.getValue(); 
+			int sum = a + b;
+			int difference = a - b; 
+			int product = a * b; 
+			int quotient = a / b;
+			
 			/*if(button.getModel().isRollover()) 
 			{
 				button.setEnabled(true);
@@ -166,5 +202,3 @@ public class Main
 		frame.setVisible(true);*/
 	}
 }
-		
-
