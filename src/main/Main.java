@@ -1,8 +1,8 @@
 package main;
 
 import java.awt.FlowLayout;
-import java.text.ParseException;
 import java.util.Scanner;
+import java.math.*;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -25,10 +25,18 @@ public class Main
 		
 		//JButton button = new JButton("");
 		//JButton button2 = new JButton("");
-		JButton buttonSum = new JButton("Add a and b!");
-		JButton buttonDifference = new JButton("Subtract a and b!");
-		JButton buttonProduct = new JButton("Multiply a and b!");
-		JButton buttonQuotient = new JButton("Divide a and b!");
+		
+		JButton buttonSum = new JButton("");
+		JButton buttonDifference = new JButton("");
+		JButton buttonProduct = new JButton("");
+		JButton buttonQuotient = new JButton("");
+		
+		JButton circum = new JButton(""); 
+		JButton circleArea = new JButton("");
+		JButton trianglePerim = new JButton("");
+		JButton triangleArea = new JButton(""); 	
+		JButton rectPerim = new JButton(""); 
+		JButton rectArea = new JButton("");
 		
 		SpinnerModel model = new SpinnerNumberModel(2, 1, 500, 1); 
 		JSpinner spinner = new JSpinner(model); 
@@ -36,14 +44,18 @@ public class Main
 		SpinnerModel model2 = new SpinnerNumberModel(1, 1, 500, 1); 
 		JSpinner spinner2 = new JSpinner(model2);
 		
+		SpinnerModel model3 = new SpinnerNumberModel();
+		JSpinner spinner3 = new JSpinner(model3);
+		spinner3.setSize(50, 10);
+		
 		JComponent comp = spinner.getEditor();
-		JComponent comp2 = spinner2.getEditor(); 
+		//JComponent comp2 = spinner2.getEditor(); 
 		
 		JFormattedTextField field = (JFormattedTextField) comp.getComponent(0);
-		JFormattedTextField field2 = (JFormattedTextField) comp2.getComponent(0);
+		//JFormattedTextField field2 = (JFormattedTextField) comp2.getComponent(0);
 		
 		DefaultFormatter formatter = (DefaultFormatter) field.getFormatter();
-		DefaultFormatter formatter2 = (DefaultFormatter) field2.getFormatter(); 
+		//DefaultFormatter formatter2 = (DefaultFormatter) field2.getFormatter(); 
 		formatter.setCommitsOnValidEdit(true);
 	    spinner.addChangeListener(new ChangeListener() {
 
@@ -65,15 +77,29 @@ public class Main
 		//panel.add(label);
 		//panel.add(button);
 		//panel.add(button2); 
+		
+		//default operations
 		panel.add(buttonSum);
 		panel.add(buttonDifference);
 		panel.add(buttonProduct);
 		panel.add(buttonQuotient);
+		
+		//geometry
+		panel.add(circleArea);
+		panel.add(circum);
+		panel.add(trianglePerim); 
+		panel.add(triangleArea); 
+		panel.add(rectPerim); 
+		panel.add(rectArea);
+		
+		//spinners
 		panel.add(spinner);
 		panel.add(spinner2); 
+		panel.add(spinner3);
+		spinner3.setToolTipText("A");
 		
+		//close
 		panel.add(closeButton);
-		
 		
 		frame.setVisible(true);
 		frame.add(panel);
@@ -95,21 +121,44 @@ public class Main
 		closeButton.setEnabled(true);
 		
 		buttonSum.setSize(50, 50);
-		buttonSum.setText("Add a and b!");
+		buttonSum.setText("a + b");
 		buttonSum.setEnabled(true);
 		
 		buttonDifference.setSize(50, 50);
-		buttonDifference.setText("Subtract a and b!");
+		buttonDifference.setText("a - b");
 		buttonDifference.setEnabled(true);
 		
 		buttonProduct.setSize(50, 50);
-		buttonProduct.setText("Multiply a and b!");
+		buttonProduct.setText("a * b");
 		buttonProduct.setEnabled(true);
 		
 		buttonQuotient.setSize(50, 50);
-		buttonQuotient.setText("Divide a and b!");
+		buttonQuotient.setText("a / b");
 		buttonQuotient.setEnabled(true);
 		
+		circum.setSize(50, 50);
+		circum.setText("Circle circumference");
+		circum.setEnabled(true);
+		
+		circleArea.setSize(50, 50);
+		circleArea.setText("Circle area");
+		circleArea.setEnabled(true);
+		
+		trianglePerim.setSize(50, 50);
+		trianglePerim.setText("Triangle perimeter");
+		trianglePerim.setEnabled(true);
+		 
+		triangleArea.setSize(50, 50);
+		triangleArea.setText("Triangle area");
+		triangleArea.setEnabled(true);
+		
+		rectPerim.setSize(50, 50);
+		rectPerim.setText("Rectangle perimeter");
+		rectPerim.setEnabled(true);
+		
+		rectArea.setSize(50,  50);
+		rectArea.setText("Rectangle area");
+		rectArea.setEnabled(true);
 		/*try 
 		{
 			spinner.commitEdit();
@@ -125,14 +174,27 @@ public class Main
 			
 		while(true)
 		{
-			// TODO:  COMPLETED
-			int a = (Integer) spinner.getValue();
-			// TODO: Find a way to update this via change in spinner - COMPLETED
-			int b = (Integer) spinner2.getValue(); 
-			int sum = a + b;
-			int difference = a - b; 
-			int product = a * b; 
-			int quotient = a / b;
+			//variables
+			double a = (Integer) spinner.getValue();
+			double b = (Integer) spinner2.getValue(); 
+			double c = (Integer) spinner3.getValue(); 
+			double r = (Integer) spinner3.getValue(); 
+			
+			//basic operations
+			double sum = a + b;
+			double difference = a - b; 
+			double product = a * b; 
+			double quotient = a / b;
+			
+			//geometry
+			double circumCalc = 2 * 3.14 * r; 
+			double areaCalc = 3.14 * r * r; 
+			double triArea = b / 2 * a; 
+			double triPerim = a + b + c; 
+			double rectPerimA = 2 * a;
+			double rectPerimB = 2 * b; 
+			double rectPerimValue = rectPerimA + rectPerimB;
+			double rectAreaValue = a * b; 
 			
 			/*if(button.getModel().isRollover()) 
 			{
@@ -169,6 +231,37 @@ public class Main
 				buttonQuotient.setEnabled(true);
 				System.out.println("a / b = " + quotient);
 				//break; 
+			}
+			else if(circum.getModel().isPressed()) 
+			{
+				circum.setEnabled(true); 
+				System.out.println("Circumference of the circle!: " + circumCalc);
+				//break; 
+			}
+			else if(circleArea.getModel().isPressed()) 
+			{
+				circleArea.setEnabled(true);
+				System.out.println("Area of the circle!: " + areaCalc);
+			}
+			else if(trianglePerim.getModel().isPressed()) 
+			{
+				trianglePerim.setEnabled(true);
+				System.out.println("Triangle perimeter = " + triPerim);
+			}
+			else if(triangleArea.getModel().isPressed()) 
+			{
+				triangleArea.setEnabled(true);
+				System.out.println("Triangle area = " + triArea);
+			}
+			else if(rectPerim.getModel().isPressed())
+			{
+				rectPerim.setEnabled(true);
+				System.out.println("Rectangle perimeter = " + rectPerimValue);
+			}
+			else if(rectArea.getModel().isPressed())
+			{
+				rectArea.setEnabled(true);
+				System.out.println("Rectangle area = " + rectAreaValue);
 			}
 			else if(closeButton.getModel().isPressed())
 			{
