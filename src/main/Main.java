@@ -37,6 +37,8 @@ public class Main
 		JButton triangleArea = new JButton(""); 	
 		JButton rectPerim = new JButton(""); 
 		JButton rectArea = new JButton("");
+		JButton squarePerim = new JButton("");
+		JButton squareArea = new JButton(""); 
 		
 		SpinnerModel model = new SpinnerNumberModel(2, 1, 500, 1); 
 		JSpinner spinner = new JSpinner(model); 
@@ -91,6 +93,8 @@ public class Main
 		panel.add(triangleArea); 
 		panel.add(rectPerim); 
 		panel.add(rectArea);
+		panel.add(squarePerim);
+		panel.add(squareArea);
 		
 		//spinners
 		panel.add(spinner);
@@ -159,6 +163,15 @@ public class Main
 		rectArea.setSize(50,  50);
 		rectArea.setText("Rectangle area");
 		rectArea.setEnabled(true);
+		
+		squarePerim.setSize(50, 50);
+		squarePerim.setText("Square perimeter");
+		squarePerim.setEnabled(true);
+		
+		squareArea.setSize(50, 50);
+		squareArea.setText("Square area");
+		squareArea.setEnabled(true);
+		
 		/*try 
 		{
 			spinner.commitEdit();
@@ -194,7 +207,9 @@ public class Main
 			double rectPerimA = 2 * a;
 			double rectPerimB = 2 * b; 
 			double rectPerimValue = rectPerimA + rectPerimB;
-			double rectAreaValue = a * b; 
+			double rectAreaValue = a * b;
+			double sqPerim = 4 * a;
+			double sqArea = a * a; 
 			
 			/*if(button.getModel().isRollover()) 
 			{
@@ -262,6 +277,16 @@ public class Main
 			{
 				rectArea.setEnabled(true);
 				System.out.println("Rectangle area = " + rectAreaValue);
+			}
+			else if(squarePerim.getModel().isPressed()) 
+			{
+				squarePerim.setEnabled(true); 
+				System.out.println("Square perimeter = " + sqPerim);
+			}
+			else if(squareArea.getModel().isPressed()) 
+			{
+				squareArea.setEnabled(true);
+				System.out.println("Square area = " + sqArea);
 			}
 			else if(closeButton.getModel().isPressed())
 			{
